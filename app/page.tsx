@@ -1,64 +1,108 @@
-import Image from "next/image";
+import Link from "next/link";
+
+function NavCard({
+  href,
+  icon,
+  label,
+  desc,
+  color,
+  badge,
+  badgeColor,
+}: {
+  href: string;
+  icon: React.ReactNode;
+  label: string;
+  desc: string;
+  color: string;
+  badge: string;
+  badgeColor: string;
+}) {
+  return (
+    <Link
+      href={href}
+      className={`flex items-center gap-4 bg-gray-900 border rounded-xl px-4 py-4 transition-colors ${color}`}
+    >
+      <div className="w-11 h-11 rounded-xl bg-gray-800 flex items-center justify-center flex-shrink-0">
+        {icon}
+      </div>
+      <div className="flex-1 min-w-0">
+        <p className="font-semibold text-sm">{label}</p>
+        <p className="text-gray-500 text-xs truncate">{desc}</p>
+      </div>
+      <span className={`text-[10px] font-mono font-bold px-2 py-1 rounded-md ${badgeColor}`}>
+        {badge}
+      </span>
+    </Link>
+  );
+}
+
+const tools = [
+  {
+    href: "/calculs/intensite",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 fill-amber-400">
+        <path d="M13 2L4.09 12.97H11L10 22l8.91-10.97H13L13 2z" />
+      </svg>
+    ),
+    label: "Calcul d'intensité",
+    desc: "P = U × I · Mono & Triphasé",
+    color: "border-amber-500/30 hover:border-amber-500/60",
+    badge: "P · U · I",
+    badgeColor: "bg-amber-500/10 text-amber-400",
+  },
+];
+
+const diagnostics = [
+  {
+    href: "/diagnostic",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 fill-none stroke-red-400" strokeWidth={2}>
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 8v4M12 16h.01" strokeLinecap="round" />
+      </svg>
+    ),
+    label: "Recherche de panne",
+    desc: "Diagnostic guidé · Questions Oui/Non",
+    color: "border-red-700/30 hover:border-red-600/60",
+    badge: "Guidé",
+    badgeColor: "bg-red-900/40 text-red-400",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="min-h-screen bg-gray-950 text-gray-100 flex flex-col">
+      <header className="px-5 pt-10 pb-6">
+        <h1 className="text-2xl font-black tracking-tight">
+          Assistant <span className="text-blue-400">RGIE</span>
+        </h1>
+        <p className="text-gray-400 text-sm mt-1">
+          Outils terrain pour électriciens — Belgique
+        </p>
+      </header>
+
+      <main className="flex-1 px-4 pb-8 max-w-md mx-auto w-full space-y-6">
+        <section>
+          <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-3">
+            Calculateurs
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+          <div className="space-y-3">
+            {tools.map((t) => (
+              <NavCard key={t.href} {...t} />
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-3">
+            Diagnostic
+          </p>
+          <div className="space-y-3">
+            {diagnostics.map((t) => (
+              <NavCard key={t.href} {...t} />
+            ))}
+          </div>
+        </section>
       </main>
     </div>
   );
