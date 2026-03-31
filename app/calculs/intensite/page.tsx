@@ -48,7 +48,7 @@ export default function IntensitePage() {
   return (
     <div className="min-h-screen bg-gray-950 text-gray-100 flex flex-col">
       <header className="bg-gray-900 border-b border-gray-800 px-4 py-3 flex items-center gap-3">
-        <div className="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center flex-shrink-0">
+        <div className="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center shrink-0">
           <svg viewBox="0 0 24 24" className="w-5 h-5 fill-gray-900">
             <path d="M13 2L4.09 12.97H11L10 22l8.91-10.97H13L13 2z" />
           </svg>

@@ -23,7 +23,7 @@ export default function ResultCard({ result, solveFor, mode }: Props) {
     <div
       className={`rounded-xl p-5 transition-all ${
         hasResult
-          ? "bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700"
+          ? "bg-linear-to-br from-gray-800 to-gray-900 border border-gray-700"
           : "bg-gray-900 border border-gray-800 opacity-50"
       }`}
     >

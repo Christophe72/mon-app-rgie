@@ -22,7 +22,7 @@ function NavCard({
       href={href}
       className={`flex items-center gap-4 bg-gray-900 border rounded-xl px-4 py-4 transition-colors ${color}`}
     >
-      <div className="w-11 h-11 rounded-xl bg-gray-800 flex items-center justify-center flex-shrink-0">
+      <div className="w-11 h-11 rounded-xl bg-gray-800 flex items-center justify-center shrink-0">
         {icon}
       </div>
       <div className="flex-1 min-w-0">

@@ -31,7 +31,7 @@ export default function NumericInput({
   return (
     <div className="bg-gray-900 rounded-xl px-3 py-3 flex items-center gap-2">
       <div
-        className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 font-bold text-gray-900 text-sm"
+        className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 font-bold text-gray-900 text-sm"
         style={{ backgroundColor: color }}
       >
         {symbol}
@@ -50,7 +50,7 @@ export default function NumericInput({
               [&::-webkit-outer-spin-button]:appearance-none
               [&::-webkit-inner-spin-button]:appearance-none"
           />
-          <span className="text-gray-500 font-mono text-xs flex-shrink-0">{unit}</span>
+          <span className="text-gray-500 font-mono text-xs shrink-0">{unit}</span>
         </div>
       </div>
       <button onPointerDown={(e) => e.preventDefault()} onClick={() => adjust(-step)} className={BTN}>−</button>
