@@ -52,6 +52,23 @@ const tools = [
   },
 ];
 
+const chantiers = [
+  {
+    href: "/chantiers",
+    icon: (
+      <svg viewBox="0 0 24 24" className="w-6 h-6 fill-none stroke-orange-400" strokeWidth={2}>
+        <path d="M2 17h20M12 3v3M5.2 10A7 7 0 0 1 19 10H5.2z" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M4 10v7M20 10v7" strokeLinecap="round" />
+      </svg>
+    ),
+    label: "Chantiers",
+    desc: "Gestion · Support · Contraintes · Difficulté",
+    color: "border-orange-700/30 hover:border-orange-600/60",
+    badge: "CRUD",
+    badgeColor: "bg-orange-900/40 text-orange-400",
+  },
+];
+
 const diagnostics = [
   {
     href: "/diagnostic",
@@ -99,6 +116,17 @@ export default function Home() {
           </p>
           <div className="space-y-3">
             {diagnostics.map((t) => (
+              <NavCard key={t.href} {...t} />
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <p className="text-xs text-gray-500 uppercase tracking-widest font-semibold mb-3">
+            Chantiers
+          </p>
+          <div className="space-y-3">
+            {chantiers.map((t) => (
               <NavCard key={t.href} {...t} />
             ))}
           </div>
